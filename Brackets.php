@@ -2,12 +2,11 @@
 
 class Brackets
 {
-  public function isBracketSequenceCorrect($str) 
-  {
-	  $str = str_split($str);
-      $charts = ['{' => '}', '(' => ')','[' => ']' ];
-      $stack = [];
 	public function isBracketSequenceCorrect($str) 
+	{
+	$str = str_split($str);
+	$charts = ['{' => '}', '(' => ')','[' => ']' ];
+	$stack = [];
 	  
 	for($i = 0; $i < count($str); $i++)
 	{
