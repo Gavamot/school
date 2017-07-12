@@ -30,8 +30,7 @@ class MaximumUniqueSubstring
         return count($stack) == 0;
     }
     
-    
-     private function countOfLength($str){
+    private function countOfLength($str){
         $exsist = [];
         $i = 0;
         for(; $i < strlen($str); $i++){
@@ -40,9 +39,7 @@ class MaximumUniqueSubstring
             array_push($exsist, $str[$i]);
         }
         return $i;
-     }
-    
-    
+    }  
 }
 
 
