@@ -4,7 +4,7 @@ class MaximumUniqueSubstring
 {
     public function findMaximumUniqueSubstring($str) 
     {
-        if(strlen($str) == 0) return "";
+        if(strlen($str) === 0) return "";
         $ves = [];
         $ln = count($str);
         for($i = 0; $i < $ln; $i++)

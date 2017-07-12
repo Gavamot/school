@@ -16,7 +16,7 @@ class Brackets
                     if (count($stack) === 0 || array_pop($stack) != $c) 
                         return false;
             }
-            return count($stack) == 0;
+            return count($stack) === 0;
 	}
 }
 
