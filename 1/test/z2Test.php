@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 require __DIR__ . '/../z2.php';
 use \PHPUnit\Framework\TestCase;
 

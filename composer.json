@@ -1,0 +1,13 @@
+{
+    "name": "user/school",
+    "authors": [
+        {
+            "name": "gavamot",
+            "email": "gavamot@gmail.com"
+        }
+    ],
+    "require": {
+		"phpunit/phpunit": "*",
+        "wa72/url": "dev-master"
+	}
+}
