@@ -7,7 +7,6 @@
         }
     ],
     "require": {
-		"phpunit/phpunit": "*",
-        "wa72/url": "dev-master"
+		"phpunit/phpunit": "*"
 	}
 }

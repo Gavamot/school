@@ -47,14 +47,14 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/composer.phar/" />
-          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
           <root url="phar://$MODULE_DIR$/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/composer.phar/" />
-          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
           <root url="phar://$MODULE_DIR$/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -88,7 +88,6 @@
           <root url="file://$MODULE_DIR$/vendor/sebastian/resource-operations" />
           <root url="file://$MODULE_DIR$/vendor/sebastian/version" />
           <root url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
-          <root url="file://$MODULE_DIR$/vendor/wa72/url" />
           <root url="file://$MODULE_DIR$/vendor/webmozart/assert" />
         </CLASSES>
         <SOURCES>
@@ -119,7 +118,6 @@
           <root url="file://$MODULE_DIR$/vendor/sebastian/resource-operations" />
           <root url="file://$MODULE_DIR$/vendor/sebastian/version" />
           <root url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
-          <root url="file://$MODULE_DIR$/vendor/wa72/url" />
           <root url="file://$MODULE_DIR$/vendor/webmozart/assert" />
         </SOURCES>
       </library>

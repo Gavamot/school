@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfadaeb9ac3740c8286c303344be0a63",
+    "content-hash": "3b3f74002094aaddd4dce90525beb137",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1406,41 +1406,6 @@
             "time": "2017-04-07T12:08:54+00:00"
         },
         {
-            "name": "wa72/url",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wasinger/url.git",
-                "reference": "195c4bb168fac580980f77f181e98555cff39b5a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wasinger/url/zipball/195c4bb168fac580980f77f181e98555cff39b5a",
-                "reference": "195c4bb168fac580980f77f181e98555cff39b5a",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Wa72\\Url": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christoph Singer",
-                    "email": "singer@webagentur72.de",
-                    "homepage": "http://www.webagentur72.de"
-                }
-            ],
-            "description": "Class for handling and manipulating URLs",
-            "homepage": "http://github.com/wasinger/url",
-            "time": "2017-07-20T10:05:03+00:00"
-        },
-        {
             "name": "webmozart/assert",
             "version": "1.2.0",
             "source": {
@@ -1494,9 +1459,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "wa72/url": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
