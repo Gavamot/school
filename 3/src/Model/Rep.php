@@ -6,22 +6,41 @@ class Rep implements TableModel {
 
     private $fname;
     public $buf;
-    private $meta;
+    public $meta;
 
     public function __construct( $fname = __DIR__ . '/../../Grunfeld.csv' )
     {
-        if(!file_exists($fname)) throw new Exception("db file do not exist");
         $this->fname = $fname;
+        $this->meta = [];
+        $this->buf = [];
+    }
+
+    public function setHeaders($meta){
+        $this->meta = $meta;
+    }
+
+    public function strToArray($str){
+        $str = trim($str);
+        return explode(',', $str);
+    }
+
+    public  function arrayToStr(&$arr){
+        $res = '';
+        $cm = count($arr) - 1;
+        for($i=0; $i < $cm; $i++)
+            $res .= $arr[$i] . ',';
+        $res .= "{$arr[$cm]}\n\r";
+        return $res;
     }
 
     public function getHeaders()
     {
         if(!$this->meta)
         {
-            $line = fgets(fopen($this->fname, 'r'));
-            $line = trim($line);
-            $this->meta = explode(',', $line);
-
+            if($f = fopen($this->fname, 'r')){
+                $line = fgets($f);
+                $this->meta = $this->strToArray($line);
+            }
         }
         return $this->meta;
     }
@@ -32,13 +51,16 @@ class Rep implements TableModel {
     public function load()
     {
         $this->buf = [];
-        $f = fopen($this->fname, "r");
-        fgets($f);
-        while (!feof($f)) {
-            $line = trim(fgets($f));
-            array_push($this->buf, $line);
+        if($f = fopen($this->fname, "r")){
+            fgets($f);
+            while (!feof($f)) {
+                $line = trim(fgets($f));
+                if($line){
+                    array_push( $this->buf, $this->strToArray($line) );
+                }
+            }
+            fclose($f);
         }
-        fclose($f);
     }
 
     /**
@@ -46,7 +68,12 @@ class Rep implements TableModel {
      */
     public function save()
     {
-        // TODO: Implement save() method.
+        $meta = $this->getHeaders();
+        $f = fopen($this->fname, "w");
+        fwrite( $f, $this->arrayToStr($meta) );
+        for($i=0; $i < count($this->buf); $i++)
+            fwrite( $f, $this->arrayToStr($this->buf[$i]) );
+        fclose($f);
     }
 
     /**
@@ -55,7 +82,7 @@ class Rep implements TableModel {
      */
     public function addRow(array $row)
     {
-        // TODO: Implement addRow() method.
+        array_push($this->buf, $row);
     }
 
     /**
@@ -65,7 +92,12 @@ class Rep implements TableModel {
      */
     public function updateRow($offset, array $row)
     {
-        // TODO: Implement updateRow() method.
+        for($i=0;$i < count($this->buf) && $offset >= 0 ; $i++, $offset--){
+            if($offset === 0){
+                $this->buf[$i] = $row;
+                break;
+            }
+        }
     }
 
     /**
@@ -74,7 +106,10 @@ class Rep implements TableModel {
      */
     public function getRow($offset)
     {
-        // TODO: Implement getRow() method.
+        for($i=0; $i < count($this->buf) && $offset >= 0 ; $i++, $offset--) {
+            if ($offset === 0)
+                return $this->buf[$i];
+        }
     }
 
     /**
@@ -83,7 +118,13 @@ class Rep implements TableModel {
      */
     public function deleteRow($offset)
     {
-        // TODO: Implement deleteRow() method.
+        for($i=0; $i < count($this->buf) && $offset >= 0 ; $i++, $offset--) {
+            if ($offset === 0){
+                unset( $this->buf[$i] );
+                $this->buf = array_values($this->buf);
+                break;
+            }
+        }
     }
 
     /**
@@ -91,7 +132,7 @@ class Rep implements TableModel {
      */
     public function getRows()
     {
-        // TODO: Implement getRows() method.
+        return $this->buf;
     }
 
     /**
@@ -99,6 +140,6 @@ class Rep implements TableModel {
      */
     public function countRows()
     {
-        // TODO: Implement countRows() method.
+        return count($this->buf);
     }
 }
