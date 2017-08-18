@@ -8,7 +8,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../Model/DataBaseModel.php';
 require_once __DIR__ . '/../Rep/UserRep.php';
 require_once __DIR__ . '/../Model/User.php';
-require_once __DIR__ . '/../../vendor/wa72/url/src/Wa72/Url/Url.php';
 
 class Ref extends DataBaseModel
 {
@@ -22,24 +21,29 @@ class Ref extends DataBaseModel
         return $userRep->getById($this->userId);
     }
 
-    protected function generateShortUrl($url) : string
+    public function generateShortUrl($url) : string
     {
-        $id = $this->getUser()->id;
-        $text = md5($url);
-        return  $id . $text;
+        /*
+        $hash = md5($url);
+        $res = "";
+        for ($i=0; $i< 32 - 1; $i+= 2) {
+            $number = $hash[$i] . $hash[$i+1];
+            $res .= chr($number);
+        }
+        */
+        return md5($url);
     }
+
+
 
     public function getUrl() : string
     {
         return $this->url;
     }
-
     public function setUrl($url) : void
     {
-
-
-        if(!\Wa72\Url\Url::parse($url)->is_url())
-            throw new InvalidArgumentException("Is not valid url");
+        if( !filter_var($url, FILTER_VALIDATE_URL))
+            throw new \Exception("Is not valid url");
         $this->url = $url;
         $this->shortUrl = $this->generateShortUrl($url);
     }

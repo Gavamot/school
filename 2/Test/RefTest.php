@@ -16,10 +16,20 @@ class RefTest extends \PHPUnit\Framework\TestCase
 
     public function testSetUrlUnCorrect()
     {
-        //$this->expectException(InvalidArgumentException::class);
+        $this->expectException( \Exception::class );
         $this->ref->setUrl("");
-
     }
+
+    public function testGenerateShortUrlCorrect()
+    {
+        $url = "http://php.net/manual/ru/function.mb-internal-encoding.php";
+        $this->ref->setUrl($url);
+        $this->assertEquals(md5($url), $this->ref->getShortUrl());
+    }
+
+
+
+
 
 
 }

@@ -17,6 +17,16 @@ class UserRep implements IRep
 
     public function getById ($id) : \Model\User
     {
+        /*
+        array_filter($arr, 'func')
+        function func($num)
+        {
+            if ($num >=0) {
+                return true;
+            } else {
+                return false;
+            }
+        } */
         $user = new \Model\User();
         $user->id = 1;
         return $user;

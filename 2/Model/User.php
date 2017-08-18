@@ -26,8 +26,9 @@ class User extends DataBaseModel
     {
         CheckHelper::rangeLen($password, User::MIN_PASSWORD_LEN, User::MAX_PASSWORD_LEN);
         $this->password = $password;
-        $this->passwordHash = md5($password);
+        $this->passwordHash = password_hash($password, PASSWORD_DEFAULT);
     }
+
 
     public function getPasswordHash() :string
     {
