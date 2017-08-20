@@ -29,7 +29,6 @@ function _findRepeatStr($strArray, string $subStr) : string{
         return "";
     $isMatches = true;
     $pattern = "/^({$subStr})+$/";
-    var_dump($strArray,$pattern);
     for($i = 0, $max = count($strArray); $i < $max; $i++){
         $isMatches = preg_match($pattern, $strArray[$i]);
         if(!$isMatches) break;
