@@ -4,6 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../src/Model/Rep.php';
 
 use \PHPUnit\Framework\TestCase;
+use \AppModel\Rep;
 
 class RepTest extends TestCase
 {

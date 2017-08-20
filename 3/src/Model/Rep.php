@@ -1,5 +1,7 @@
 <?php
 
+namespace AppModel;
+
 require __DIR__ . '/TableModel.php';
 
 class Rep implements TableModel {
@@ -13,6 +15,7 @@ class Rep implements TableModel {
         $this->fname = $fname;
         $this->meta = [];
         $this->buf = [];
+        $this->load();
     }
 
     public function setHeaders($meta){
@@ -92,12 +95,7 @@ class Rep implements TableModel {
      */
     public function updateRow($offset, array $row)
     {
-        for($i=0;$i < count($this->buf) && $offset >= 0 ; $i++, $offset--){
-            if($offset === 0){
-                $this->buf[$i] = $row;
-                break;
-            }
-        }
+        $this->buf[$offset] = $row;
     }
 
     /**
@@ -106,10 +104,7 @@ class Rep implements TableModel {
      */
     public function getRow($offset)
     {
-        for($i=0; $i < count($this->buf) && $offset >= 0 ; $i++, $offset--) {
-            if ($offset === 0)
-                return $this->buf[$i];
-        }
+        return$this->buf[$offset];
     }
 
     /**
@@ -118,13 +113,8 @@ class Rep implements TableModel {
      */
     public function deleteRow($offset)
     {
-        for($i=0; $i < count($this->buf) && $offset >= 0 ; $i++, $offset--) {
-            if ($offset === 0){
-                unset( $this->buf[$i] );
-                $this->buf = array_values($this->buf);
-                break;
-            }
-        }
+        unset( $this->buf[$offset] );
+        $this->buf = array_values($this->buf);
     }
 
     /**

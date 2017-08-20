@@ -1,5 +1,7 @@
 <?php
 
+namespace AppModel;
+
 interface TableModel
 {
     /**
