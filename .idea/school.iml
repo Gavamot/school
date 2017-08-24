@@ -47,10 +47,23 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
+<<<<<<< HEAD
+=======
+          <root url="phar://$MODULE_DIR$/3/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
+>>>>>>> dec488abd4ed3b27e3c795056f6818df0ef616bc
           <root url="phar://$MODULE_DIR$/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/3/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/3/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
         </CLASSES>
         <SOURCES>
+<<<<<<< HEAD
           <root url="phar://$MODULE_DIR$/composer.phar/" />
+=======
+          <root url="phar://$MODULE_DIR$/3/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/3/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/3/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
+>>>>>>> dec488abd4ed3b27e3c795056f6818df0ef616bc
         </SOURCES>
       </library>
     </orderEntry>
