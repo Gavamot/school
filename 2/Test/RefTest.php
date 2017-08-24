@@ -26,10 +26,4 @@ class RefTest extends \PHPUnit\Framework\TestCase
         $this->ref->setUrl($url);
         $this->assertEquals(md5($url), $this->ref->getShortUrl());
     }
-
-
-
-
-
-
 }

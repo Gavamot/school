@@ -1,0 +1,11 @@
+﻿# Загрузить базу из файла
+mysql -uroot < /vagrant/data.sql
+
+# Профелировщик запроса
+explaitn select * from table
+
+
+
+
+
+
