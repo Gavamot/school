@@ -6,6 +6,14 @@ use \PHPUnit\Framework\TestCase;
 
 class Z1Test extends TestCase
 {
+    protected function setUp(){
+        
+    }
+
+    protected function tearDown(){
+
+    }
+
     public function testWrongArgumentsCountThrowsInvalidArgumentException(){
         $this->expectException(InvalidArgumentException::class);
         findRepeatStr("ggg ff");
@@ -13,17 +21,17 @@ class Z1Test extends TestCase
 
     public function testWrongArgumentsLengthThrowsInvalidArgumentException(){
         $this->expectException(InvalidArgumentException::class);
-        $longStr = str_repeat("longString", 200);
-        findRepeatStr("ggg ff " . $longStr);
+        $longStr = str_repeat('longString', 200);
+        findRepeatStr('ggg ff ' . $longStr);
     }
 
     public function testNotFound(){
-        $this->assertEquals( findRepeatStr("asd ggg ggg"), "" );
+        $this->assertEquals( findRepeatStr('asd ggg ggg'), '' );
     }
 
     public function testSimple(){
-        $this->assertEquals( findRepeatStr("abcabc abc abcabcabc"), "abc" );
-        $this->assertEquals( findRepeatStr("abababab abab abababababab"), "abab" );
-        $this->assertEquals( findRepeatStr("gggggggg gggg ggggg"), "g" );
+        $this->assertEquals( findRepeatStr('abcabc abc abcabcabc'), 'abc' );
+        $this->assertEquals( findRepeatStr('abababab abab abababababab'), 'abab' );
+        $this->assertEquals( findRepeatStr('gggggggg gggg ggggg'), 'g' );
     }
 }

@@ -25,8 +25,8 @@ function findRepeatStr(string $input) : string{
 }
 
 function _findRepeatStr($strArray, string $subStr) : string{
-    if($subStr === "")
-        return "";
+    if($subStr === '')
+        return '';
     $isMatches = true;
     $pattern = "/^({$subStr})+$/";
     for($i = 0, $max = count($strArray); $i < $max; $i++){

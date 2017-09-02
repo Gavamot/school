@@ -13,15 +13,30 @@ function getMaxInterval(string $input) : string{
     $args = preg_split('/\s+/', $input);
     $argsCount = count($args);
     $points = [];
-    for($i = 0; $i< $argsCount; $i++)
-        TimePoint::addIntervalPointsToArray($args[$i], $points);
+    for($i = 0; $i< $argsCount; $i++){
+        $time =  preg_split("/-/", $args[$i]);
+        array_push($points, new TimePoint($time[0], true));
+        array_push($points, new TimePoint($time[1], false));
+    }
     array_multisort(array_map('sortIntervalsByEnd', $points), $points);
-    var_dump($points);
-    return "0 -";
+    $count = 0; $maxCount = 0; $start = 0; $end = 0;
+    for($i = 0, $max = $argsCount * 2; $i< $max; $i++){
+        $p = $points[$i];
+        if($p->sign) $count++;
+        else $count--;
+        if($count > $maxCount){
+            $maxCount = $count;
+            //if($p->sign && $start == 0) $start = $p->time;
+            //else $end = $p->$time;
+        }
+    }
+    //$start = TimePoint::timeToString($start);
+    //$end = TimePoint::timeToString($end);
+    return "{$maxCount} {$start}-{$end}";
 }
 
-function sortIntervalsByEnd(Interval $interval1, Interval $interval2){
-    return $interval1->end->compare($interval2->end);
+function sortIntervalsByEnd(TimePoint $p1){
+    return $p1->time;
 }
 
 class TimePoint{
@@ -30,24 +45,14 @@ class TimePoint{
     public $sign; 
     public function __construct($str, $sign)
     {
-        $time =  preg_split(':', $str);
+        $time =  preg_split("/:/", $str);
         $this->time = (int)$time[0] * 60 + (int)$time[1];
         $this->sign = $sign;
     }
 
-    public static function addIntervalPointsToArray($timeStr, &$array) : void{
-        var_dump($timeStr);
-        $time =  preg_split('-', $timeStr);
-        $b = new Time($time[0], true);
-        $e = new Time($time[1], false);
-        array_push($array, $b);
-        array_push($array, $e);
+    public static function timeToString(int $time){
+        $h = (int)($time / 60);
+        $m = $time - $h * 60;
+        return $h . ':' . $m;
     }
-    public function compare($t) : int
-    {
-        if($this->time > $t->time) return 1;
-        else if($this->time < $t->time) return -1;
-        return 0;
-    }
-    
 }
